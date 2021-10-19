@@ -1,0 +1,25 @@
+## maximum of 3 numbers
+CREATE_PROGRAM;
+
+SPAWN nr a;
+SPAWN nr b;
+SPAWN nr c;
+SPAWN nr max;
+
+max <- 0;
+a <- IN("Type first number: ");
+b <- IN("Type second number: ");
+c <- IN("Type third number: ");
+
+CHECK a GREATER_THAN max => 
+@ max <-a; @
+
+CHECK b GREATER_THAN max => 
+@ max <- b; @
+
+CHECK c GREATER_THAN max => 
+@ max <- c; @
+
+OUT("Maxium number is: ", max);
+
+DESTROY_PROGRAM;

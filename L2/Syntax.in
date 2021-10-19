@@ -1,0 +1,31 @@
+//program
+program = "CREATE_PROGRAM" ";" decllist stmtlist "DESTROY_PROGRAM" ";"
+
+//types
+typesimple = "nr" | "flag" | "char"
+arraydecl = typesimple "[" nr "]"
+type = typesimple | arraydecl
+
+//declarations
+declaration = "SPAWN" type IDENTIFIER ";"
+decllist = declaration | declaration decllist
+
+//expressions
+expression = arithmexp | binaryexp | IDENTIFIER | nr | char
+arithmexp = arithmexp ("+" | "-" | "*" | "/" | "%") (IDENTIFIER | nr) | IDENTIFIER | nr
+binaryexp = binaryexp ("BINARY_AND" | "BINARY_OR") (IDENTIFIER | nr) | IDENTIFIER | nr
+
+//statements
+stmt = simplstmt | structstmt
+stmtlist = stmt | stmt stmtlist
+simplstmt = (assignstmt | iostmt) ";"
+cmpdstmt = "@" stmtlist "@"
+structstmt = cmpdstmt | ifstmt | whilestmt
+assignstmt = IDENTIFIER "<-" expression
+iostmt = ("IN" | "OUT") """ {char} """
+ifstmt = "CHECK" condition "=>" stmt
+whilestmt = "LOOP" condition "=>" stmt
+
+//conditionals
+condition = expression RELATION expression
+RELATION = "LESS_THAN" | "GREATER_THAN" | "LESS_OR_EQUAL_THAN" | "GREATER_OR_EQUAL_THAN" | "EQUAL" | "IS"
