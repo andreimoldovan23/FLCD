@@ -1,0 +1,22 @@
+## compute sum of n numbers
+CREATE_PROGRAM;
+
+SPAWN nr numbers;
+SPAWN nr var;
+SPAWN nr index;
+SPAWN nr sum; 
+
+numbers <- IN("Input maximum number of variables: ");
+index <- 0;
+sum <- 0;
+
+LOOP index LESS_THAN numbers =>
+@
+	var <- IN("Type number: ");
+	index <- index + 1;
+	sum <- sum + var;
+@
+
+OUT("Sum is: ", sum);
+
+DESTROY_PROGRAM;

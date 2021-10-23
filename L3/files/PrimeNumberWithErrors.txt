@@ -1,4 +1,4 @@
-## check if a number is prime
+## check if a number is prime, contains lexical errors
 CREATE_PROGRAM;
 
 SPAWN nr number;
@@ -8,12 +8,12 @@ SPAWN flag isPrime;
 
 number <- IN("Type number: ");
 divisor <- 2;
-halfNumber <- number / 2;
+halfNumber <- numer / 2;
 isPrime <- true;
 
-LOOP divisor LESS_OR_EQUAL_THAN halfNumber AND isPrime IS true =>
+LOOP divisor LESS_OR_EQUAL_THAN halfNumber AND isPrime = true =>
 @
-	CHECK number % divisor EQUAL 0 => 
+	CHECK number % divisor = 0 => 
 	@ isPrime <- false; @
 @
 
@@ -21,6 +21,6 @@ CHECK isPrime IS true =>
 @ OUT("The number is prime"); @
 
 CHECK isPrime IS false => 
-@ OUT("The number is not prime"); @
+@ OUT("The number is false"); @
 
 DESTROY_PROGRAM;

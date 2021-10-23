@@ -22,7 +22,7 @@ simplstmt = (assignstmt | iostmt) ";"
 cmpdstmt = "@" stmtlist "@"
 structstmt = cmpdstmt | ifstmt | whilestmt
 assignstmt = IDENTIFIER "<-" expression
-iostmt = ("IN" | "OUT") """ {char} """
+iostmt = ("IN" | "OUT") "(" string ")"
 ifstmt = "CHECK" condition "=>" stmt
 whilestmt = "LOOP" condition "=>" stmt
 

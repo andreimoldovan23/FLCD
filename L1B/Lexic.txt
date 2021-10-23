@@ -14,7 +14,10 @@ Constants:
 		nr = "0" | ("+" | "-") ("1" | "2" | ... | "9") {digit}
 	
 	2. flag
-		flag = "true" | "false" | "0" | "1"
+		flag = "true" | "false"
 		
 	3. char
-		char = """ letter """ | digit
+		char = letter | digit
+		
+	4. string
+		string = """ char {(char | " " | ":" | "?" | "!" | ";" | "_" | "," | "." | "(" | ")" | "#")} """
